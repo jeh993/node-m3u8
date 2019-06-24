@@ -33,6 +33,13 @@ PlaylistItem.prototype.toString = function toString() {
   if (this.get('byteRange') != null) {
     output.push('#EXT-X-BYTERANGE:' + this.get('byteRange'));
   }
+    if (this.get('cueOut')){
+        var duration = this.get('cueOut');
+        output.push('#EXT-X-CUE-OUT:DURATION=' + duration);
+    }
+    if (this.get('cueIn')){
+        output.push('#EXT-X-CUE-IN');
+    }
   output.push(this.get('uri'));
 
   return output.join('\n');
